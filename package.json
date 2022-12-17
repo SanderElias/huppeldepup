@@ -1,0 +1,55 @@
+{
+  "name": "@se-ng/huppeldepup",
+  "version": "0.0.0",
+  "description": "huppeldepup is a CLI tool to help you manage environment variables for Angular projects in Angular CLI.",
+  "author": "sanderelias",
+  "bin": {
+    "huppeldepup": "./bin/run"
+  },
+  "homepage": "https://github.com/sanderelias/huppeldepup",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "sanderelias/huppeldepup",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "chalk-template": "^0.4.0",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.10",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bugs": "https://github.com/sanderelias/huppeldepup/issues",
+  "keywords": [
+    "Angular",
+    "environment",
+    "environment variables",
+    "environment variables for Angular",
+    "environment variables for Angular CLI",
+    "environment variables for Angular projects",
+    "environment variables for Angular projects in Angular CLI"
+  ],
+  "types": "dist/index.d.ts"
+}

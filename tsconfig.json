@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "importHelpers": true,
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "outDir": "bin",
+    "rootDir": "src",
+    "strict": true,
+    "target": "ES2020"
+  },
+  "files": [
+    "src/huppeldepup.ts", "./src/center.ts", "./src/usesDefaultWarn.ts", "src/defaults.ts"
+  ]
+}
