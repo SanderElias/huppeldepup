@@ -1,7 +1,8 @@
+import { readdirSync } from 'fs';
+import { join } from 'path';
+import yargs from 'yargs';
 
-import yargs from 'yargs/yargs';
-
-const arg = yargs(process.argv.slice(2)).options({
+const arg:any = yargs(process.argv.slice(2)).options({
   env: { type: 'string', alias: 'e', default: undefined, description: 'The environment to use' },
   envVar: { type: 'string', alias: 'v', default: 'ANGULAR_ENV', description: 'The name of the environment variable to use' },
   envFolder: { type: 'string', alias: 'f', default: 'environments', description: 'The folder containing the environment files to read' },
@@ -15,9 +16,9 @@ export const outputPath = arg.outputPath;
 export const fileName = arg.fileName;
 
 /** boolean indicating env variable is not set */
-export const useDefault = !process.env[envVar] ?? true;
+export const useDefault = !process.env[envVar] ?? !arg.env ?? true;
 /** the var containing the environment */
-export const env = arg.envVar ?? process.env[envVar] ?? 'production';
+export const env = arg.env ?? process.env[envVar] ?? 'prod';
 
 /** welcome string */
 export const welcome = '❤️❤️❤️ Welcome to the Huppeldepup CLI! ❤️❤️❤️';
@@ -29,7 +30,13 @@ export const defaultFileContents = `
 export const environment = /** placeholder */;
 
 `
-
 export const defaultContent = {
   production: true
 } as const;
+
+
+const availableEnvs = readdirSync( join(process.cwd(), envFolder), {
+  withFileTypes: true,
+}).filter(dirent => dirent.isFile()).filter(dirent => dirent.name.endsWith('.json')).map(dirent => dirent.name.replace('.json', ''));
+
+console.log(availableEnvs);

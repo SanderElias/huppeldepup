@@ -2,14 +2,16 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "module": "ES2022",
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "bin",
+    "removeComments": true,
     "rootDir": "src",
     "strict": true,
-    "target": "ES2020"
+    "target": "ES2020",
+    "allowJs": true
   },
   "files": [
-    "src/huppeldepup.ts", "./src/center.ts", "./src/usesDefaultWarn.ts", "src/defaults.ts"
+    "src/huppeldepup.ts", "./src/createContentfromJson.ts"
   ]
 }

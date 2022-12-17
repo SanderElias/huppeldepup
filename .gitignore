@@ -8,3 +8,5 @@
 /yarn.lock
 node_modules
 bin
+src/environments
+src/environments/environment.ts
