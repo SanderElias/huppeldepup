@@ -1,6 +1,6 @@
 {
   "name": "@se-ng/huppeldepup",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "huppeldepup is a CLI tool to help you manage environment variables for Angular projects in Angular CLI.",
   "author": "sanderelias",
   "bin": {
@@ -12,10 +12,7 @@
   "main": "dist/index.js",
   "repository": "sanderelias/huppeldepup",
   "files": [
-    "/bin",
-    "/dist",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
+    "/bin"
   ],
   "dependencies": {
     "chalk": "^5.2.0",
@@ -32,13 +29,9 @@
   },
   "type": "module",
   "scripts": {
-    "build": "shx rm -rf bin && tsc -p",
-    "lint": "eslint . --ext .ts --config .eslintrc",
-    "postpack": "shx rm -f oclif.manifest.json",
-    "posttest": "yarn lint",
-    "prepack": "yarn build && oclif manifest && oclif readme",
-    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif readme && git add README.md"
+    "build": "shx rm -rf bin && tsc -b",
+    "clean": "shx rm -rf bin dist",
+    "doPublish": "npm version patch && npm run build && npm publish --dry-run"
   },
   "engines": {
     "node": ">=16.18.0"
