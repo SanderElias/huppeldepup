@@ -12,6 +12,7 @@ src/environments
 src/environments/environment.ts
 se-ng-huppeldepup*.tgz
 helpers
-huppeldepup.d.ts
-huppeldepup.js
 huppeldepup.mjs
+huppeldepup.d.mts
+environments
+environments/**

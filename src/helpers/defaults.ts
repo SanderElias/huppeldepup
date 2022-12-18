@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import yargs from 'yargs';
-import { getEnvs } from "./get-envs.js";
+import { getEnvs } from "./get-folders.js";
 
 const arg: any = yargs(process.argv.slice(2)).options({
   env: { type: 'string', alias: 'e', default: undefined, description: 'The environment to use' },
