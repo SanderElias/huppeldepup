@@ -1,28 +1,26 @@
-import chalkTemplate from 'chalk-template';
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { join } from 'path';
-import { center } from './center.js';
-import { createContentFromJson } from './createContentfromJson.js';
-import { env, envFolder, fileName, outputPath, useDefault, welcome } from './defaults.js';
-import { usesDefaultWarn } from './usesDefaultWarn.js';
+#! /usr/bin/env node
 
-console.log(chalkTemplate`
+import chalkTemplate from 'chalk-template';
+import { center } from './helpers/center.js';
+import { checkEnvExists } from './helpers/check-env-exists.js';
+import { env, envFolder, fileName, isEnvSet, outputPath, welcome } from './helpers/defaults.js';
+import { log } from './helpers/log-to-console.js';
+import { usesDefaultWarn } from './helpers/uses-default-warn.js';
+import { write } from './helpers/write.js';
+
+log(chalkTemplate`
 {black {bgGreen  ${center(welcome)} }}`)
 
-usesDefaultWarn(useDefault);
+usesDefaultWarn(isEnvSet);
+checkEnvExists();
 
-console.log(chalkTemplate`
+write();
+
+log(chalkTemplate`
 Using environment: {green ${env}}
 read from        : {green ./${envFolder}/${env}.json}
+Written to file  : {green ./${outputPath}/${fileName}}
 `)
-
-const outFilePath = join(process.cwd(), outputPath);
-if (!existsSync(outFilePath)) {
-  mkdirSync(outFilePath, { recursive: true });
-}
-const fileContent = await createContentFromJson();
-writeFileSync(join(outFilePath, fileName), fileContent);
-
 
 
 

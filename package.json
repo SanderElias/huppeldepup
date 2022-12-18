@@ -4,7 +4,8 @@
   "description": "huppeldepup is a CLI tool to help you manage environment variables for Angular projects in Angular CLI.",
   "author": "sanderelias",
   "bin": {
-    "huppeldepup": "./bin/run"
+    "huppeldepup": "bin/huppeldepup",
+    "@se-ng/huppeldepup": "bin/huppeldepup"
   },
   "homepage": "https://github.com/sanderelias/huppeldepup",
   "license": "MIT",
@@ -31,7 +32,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "shx rm -rf dist && tsc -b",
+    "build": "shx rm -rf bin && tsc -p",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",
@@ -40,7 +41,7 @@
     "version": "oclif readme && git add README.md"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.18.0"
   },
   "bugs": "https://github.com/sanderelias/huppeldepup/issues",
   "keywords": [

@@ -1,3 +1,4 @@
-# huppeldepup
+# ❤️❤️❤️ Huppeldepup CLI, the missing link! ❤️❤️❤️
 
-This is a test project for the [huppeldepup]() project.
+The Huppeldepup CLI is a command line interface to solve the missing link between
+environment variables and your [Angular](https://angular.io/) applicationS.
