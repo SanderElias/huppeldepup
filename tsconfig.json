@@ -4,7 +4,7 @@
     "importHelpers": true,
     "module": "ESNext",
     "moduleResolution": "node",
-    "outDir": "bin",
+    "outDir": "./",
     "removeComments": true,
     "rootDir": "src",
     "strict": true,
@@ -12,6 +12,6 @@
     "allowJs": true
   },
   "files": [
-    "src/huppeldepup.ts"
+    "src/huppeldepup.mts", "src/helpers/get-envs.ts"
   ]
 }

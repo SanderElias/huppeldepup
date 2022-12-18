@@ -4,15 +4,16 @@
   "description": "huppeldepup is a CLI tool to help you manage environment variables for Angular projects in Angular CLI.",
   "author": "sanderelias",
   "bin": {
-    "huppeldepup": "bin/huppeldepup",
-    "@se-ng/huppeldepup": "bin/huppeldepup"
+    "huppeldepup": "huppeldepup.mjs"
   },
   "homepage": "https://github.com/sanderelias/huppeldepup",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "huppeldepup.mjs",
   "repository": "sanderelias/huppeldepup",
   "files": [
-    "/bin"
+    "huppeldepup.js",
+    "huppeldepup.d.ts",
+    "/helpers"
   ],
   "dependencies": {
     "chalk": "^5.2.0",
@@ -38,6 +39,8 @@
   },
   "bugs": "https://github.com/sanderelias/huppeldepup/issues",
   "keywords": [
+    "Huppeldepup",
+    "CLI",
     "Angular",
     "environment",
     "environment variables",
@@ -46,5 +49,5 @@
     "environment variables for Angular projects",
     "environment variables for Angular projects in Angular CLI"
   ],
-  "types": "dist/index.d.ts"
+  "types": "huppeldepup.d.ts"
 }

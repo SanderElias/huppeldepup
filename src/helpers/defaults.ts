@@ -1,7 +1,7 @@
-import { existsSync, readdirSync, readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import yargs from 'yargs';
-import { log } from './log-to-console.js';
+import { getEnvs } from "./get-envs.js";
 
 const arg: any = yargs(process.argv.slice(2)).options({
   env: { type: 'string', alias: 'e', default: undefined, description: 'The environment to use' },
@@ -58,8 +58,7 @@ export const defaultContent = {
 } as const;
 
 
-export const availableEnvs = readdirSync(join(process.cwd(), envFolder), {
-  withFileTypes: true,
-}).filter(dirent => dirent.isFile()).filter(dirent => dirent.name.endsWith('.json')).map(dirent => dirent.name.replace('.json', ''));
+
+export const availableEnvs = getEnvs();
 
 

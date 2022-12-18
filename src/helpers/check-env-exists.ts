@@ -1,7 +1,8 @@
 import chalkTemplate from 'chalk-template';
-import { existsSync } from 'node:fs';
-import { join } from 'path';
-import { availableEnvs, env, envFolder, outputPath } from './defaults.js';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { createInterface } from 'node:readline';
+import { join } from 'node:path';
+import { availableEnvs, env, envFolder } from './defaults.js';
 import { log } from './log-to-console.js';
 
 
@@ -18,3 +19,32 @@ available environments are:
     process.exit(1);
   }
 }
+
+export function checkEnviromentFolderExists() {
+  return new Promise((resolve) => {
+    const envPath = join(process.cwd(), envFolder);
+
+    if (!existsSync(envPath)) {
+      const rl = createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+      console.log(chalkTemplate`
+{red  ⚠️⚠️⚠️ Environments folder {white ${envFolder}} does not exist ⚠️⚠️⚠️ }
+
+  Do you want that Huppeldepup create:
+    the folder {green ${envFolder}}
+    and the files {green ${envFolder}/dev.json} and {green ${envFolder}/prod.json}`);
+      rl.question(`for you? (Y/n)`, (answer) => {
+        if (answer !== 'Y' && answer !== 'y') { process.exit(1); }
+        mkdirSync(envPath, { recursive: true });
+        writeFileSync(join(envPath, `prod.json`), JSON.stringify({ production: true }, undefined, 2));
+        writeFileSync(join(envPath, `dev.json`), JSON.stringify({ production: false }, undefined, 2));
+        rl.close();
+        resolve(undefined);
+      })
+    }
+    else { resolve(undefined); }
+  });
+}
+
