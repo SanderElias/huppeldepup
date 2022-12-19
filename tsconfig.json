@@ -12,6 +12,6 @@
     "allowJs": true
   },
   "files": [
-    "src/huppeldepup.mts", "src/helpers/readenvir.ts"
+    "src/huppeldepup.mts"
   ]
 }
